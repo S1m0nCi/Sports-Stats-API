@@ -1,0 +1,27 @@
+{
+  "name": "sports-stats-api",
+  "version": "1.0.0",
+  "description": "An API using sports statistics.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S1m0nCi/Sports-Stats-API.git"
+  },
+  "keywords": [
+    "Sports",
+    "Statistics",
+    "API"
+  ],
+  "author": "Simon Ciavarro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/S1m0nCi/Sports-Stats-API/issues"
+  },
+  "homepage": "https://github.com/S1m0nCi/Sports-Stats-API#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
