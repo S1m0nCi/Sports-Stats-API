@@ -82,4 +82,44 @@ const updateStats = async (req, res, next) => {
     }
 };
 
+router
+    .route('api/v1/stats/:id')
+    .get(getStats)
+    .put(updateStats)
+
+
+// DELETE method
+
+const deleteStats = async (req, res, next) => {
+    try {
+        const data = fs.readFileSync(statsFilePath)
+        const stats = JSON.parse(data)
+        const playerStats = stats.find(player => player.id === Number(req.params.id))
+        if (!playerStats) {
+            const err = new Error('Player stats not found');
+            err.status = 404
+            throw err
+        }
+        const newStats = stats.map(player => {
+            if (player.id === Number(req.params.id)) {
+                return null
+            } else {
+                return player
+            }
+        })
+        .filter(player => player !== null);
+        fs.writeFileSync(statsFilePath, JSON.stringify(newStats))
+        res.status(200).end()
+    } catch (error) {
+        next(error)
+    }
+}
+
+router
+    .route('/api/v1/stats/:id')
+    .get(getStats)
+    .put(updateStats)
+    .delete(deleteStats);
+
+
 
